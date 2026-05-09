@@ -9,7 +9,11 @@ import resumeRoutes from "./routes/resumeRoutes.js";
 
 dotenv.config();
 
-dns.setServers(["8.8.8.8", "8.8.4.4", "1.1.1.1"]);
+try {
+  dns.setServers(["8.8.8.8", "8.8.4.4", "1.1.1.1"]);
+} catch (e) {
+  console.warn("Could not set DNS servers:", e.message);
+}
 
 const app = express();
 

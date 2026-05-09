@@ -130,6 +130,34 @@ project/
    npm run dev
    ```
 
+## Deployment
+
+The project is structured to be deployed as two separate services on Vercel: a Frontend (client) and a Backend (server).
+
+### 1. Backend Deployment (Vercel)
+
+1. Go to the [Vercel Dashboard](https://vercel.com/dashboard).
+2. Click **Add New** > **Project** and import your repository.
+3. In the project settings, set the **Root Directory** to `server`.
+4. Configure **Environment Variables**:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string.
+   - `JWT_SECRET`: A secure random string for JWT.
+   - `GEMINI_API_KEY`: Your Google Gemini API key.
+   - `CLIENT_URL`: The URL of your deployed frontend (e.g., `https://your-app.vercel.app`).
+5. Click **Deploy**.
+
+### 2. Frontend Deployment (Vercel)
+
+1. Go back to the Vercel Dashboard.
+2. Click **Add New** > **Project** and import the same repository again.
+3. In the project settings, set the **Root Directory** to `client`.
+4. Configure **Environment Variables**:
+   - `VITE_API_BASE_URL`: The URL of your deployed backend (e.g., `https://your-api.vercel.app`).
+5. Click **Deploy**.
+
+> [!TIP]
+> Make sure to update the `CLIENT_URL` in your backend environment variables once your frontend is deployed to allow CORS.
+
 ## How It Works
 
 1. **Register/Login**: Create an account to access the analyzer.
